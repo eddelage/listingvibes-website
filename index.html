@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Vibes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --text-color: #000000;
+        --light-bg: #f3f4f6;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      .navbar {
+        padding: 3rem 0;
+        background: #fff251 !important;
+        border: none !important;
+        box-shadow: none !important;
+        transition: padding 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        padding: 1rem 0;
+      }
+
+      .navbar-brand {
+        padding: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand img {
+        height: 50px;
+        width: auto;
+        transition: height 0.3s ease;
+      }
+
+      .navbar.scrolled .navbar-brand img {
+        height: 40px;
+      }
+
+      .col-12 {
+        display: flex;
+        padding: 0;
+      }
+
+      .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        max-width: 1320px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .navbar-area {
+        border: none !important;
+        outline: none !important;
+      }
+
+      .hero-section {
+        padding: 4rem 0;
+        background: var(--light-bg);
+      }
+
+      .hero-content {
+        max-width: 600px;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero-text {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        color: #000000;
+      }
+
+      .download-btn {
+        background: #000;
+        color: #fff !important;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .download-btn:hover {
+        background: #333;
+        color: #fff !important;
+      }
+
+      .download-btn .apple-logo {
+        width: 28px;
+        height: 28px;
+        fill: #fff;
+        margin-right: 0;
+      }
+
+      .download-btn .divider {
+        width: 1.5px;
+        height: 24px;
+        background: #fff;
+        margin: 0;
+      }
+
+      .hero-image {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 4rem 0;
+          text-align: center;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-image {
+          margin-top: 3rem;
+        }
+      }
+
+      /* Feature Section Styles */
+      .features-section {
+        background: white;
+      }
+
+      .feature-box {
+        padding: 2rem;
+        background: white;
+        height: 100%;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .feature-icon span {
+        font-size: 3rem;
+        line-height: 1;
+      }
+
+      .feature-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #000000;
+        font-weight: 600;
+      }
+
+      .feature-text {
+        color: #000000;
+        margin-bottom: 0;
+        font-size: 1.125rem;
+        line-height: 1.6;
+      }
+
+      .feature-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Integration Section Styles */
+      .integration-section {
+        background: var(--light-bg);
+      }
+
+      .integration-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000000;
+      }
+
+      .integration-text {
+        font-size: 1.1rem;
+        color: #000000;
+        line-height: 1.8;
+      }
+
+      .integration-benefits li {
+        font-size: 1.1rem;
+        color: #000000;
+        display: flex;
+        align-items: center;
+      }
+
+      .benefit-icon {
+        color: #000000;
+        font-weight: bold;
+        margin-right: 0.75rem;
+        font-size: 1.2rem;
+      }
+
+      .integration-image {
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: 768px) {
+        .integration-content {
+          padding-left: 0 !important;
+          margin-top: 2rem;
+          text-align: center;
+        }
+
+        .integration-benefits li {
+          justify-content: center;
+        }
+
+        .integration-image {
+          margin-top: 2rem;
+        }
+      }
+
+      /* Footer Styles */
+      .footer {
+        background: #fff251;
+        border: none !important;
+      }
+
+      .social-link {
+        color: #000000;
+        transition: color 0.3s ease;
+        display: inline-block;
+        padding: 8px;
+      }
+
+      .social-link:hover {
+        color: #000000;
+      }
+
+      .social-link svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .nav-links {
+        margin-left: auto;
+      }
+
+      .copyright-text {
+        font-size: 0.875rem;
+        color: #000000;
+      }
+
+      .download-nav-btn {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .download-nav-btn.visible {
+        opacity: 1;
+      }
+
+      .download-nav-btn .divider {
+        width: 1.5px;
+        height: 24px;
+        background: #fff;
+        margin: 0;
+      }
+
+      /* Testimonial Styles */
+      .testimonial-box {
+        background: #f8f9fa;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        height: 100%;
+      }
+
+      .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #000000;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        font-size: 0.9rem;
+      }
+
+      .testimonial-author strong {
+        color: #000000;
+      }
+
+      .testimonial-author .text-muted {
+        color: #6b7280;
+      }
+
+      .navbar-toggler {
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+
+      .navbar-toggler-icon {
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="assets/img/logo/logo_text.svg" alt="Listing Vibes" height="40">
+          </a>
+          <div class="nav-links d-none d-lg-flex">
+            <a href="#download" class="download-nav-btn">
+                <svg class="apple-logo" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M17.05 20.28c-.98.95-2.05.88-3.08.41-1.09-.47-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.41C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.78 1.18-.19 2.31-.89 3.51-.84 1.54.07 2.7.61 3.44 1.57-3.14 1.88-2.29 5.13.22 6.41-.65 1.29-1.52 2.58-2.25 4.05zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                </svg>
+                <div class="divider"></div>
+                Get Free App
+            </a>
+          </div>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse d-lg-none" id="navbarNav">
+            <div class="nav-links">
+              <a href="#download" class="download-nav-btn">Get Free App</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-text">
+                        <h1>Scroll Zillow.<br>Vibe with us.</h1>
+                        <p>Rate, drop notes, and rank listings — all while scrolling Zillow. Stay organized and finally keep your entire search in one place.</p>
+                        <button class="download-btn">
+                            <svg class="apple-logo" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.41-1.09-.47-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.41C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.78 1.18-.19 2.31-.89 3.51-.84 1.54.07 2.7.61 3.44 1.57-3.14 1.88-2.29 5.13.22 6.41-.65 1.29-1.52 2.58-2.25 4.05zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                            </svg>
+                            <div class="divider"></div>
+                            Get Free App
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="assets/img/main/hero_group_1600.png" alt="Listing Vibes App" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zillow Integration Section -->
+    <section id="zillow" class="feature-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <img src="assets/img/main/main_listing_1600.png" alt="Zillow Integration" class="feature-image">
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <div class="feature-content">
+                        <div class="feature-icon mb-4">
+                            <span>🚀</span>
+                        </div>
+                        <h2 class="feature-title mb-3">Zillow on steroids</h2>
+                        <p class="feature-text mb-4">Rate listings, drop notes, and track your vibes — all on top of the platform you already use. No new habits. Just way more tools and firepower.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <section id="ratings" class="feature-section py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-1 order-lg-1">
+                    <div class="feature-content">
+                        <div class="feature-icon mb-4">
+                            <span>⭐️</span>
+                        </div>
+                        <h2 class="feature-title mb-3">Rate listings</h2>
+                        <p class="feature-text mb-4">Score each listing across categories like location, value, layout and more. We roll it all into a single vibe score — giving you a clear picture of how each home stacks up.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-2 order-lg-2">
+                    <img src="assets/img/main/ratings_1600.png" alt="Ratings Feature" class="feature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section id="notes" class="feature-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <img src="assets/img/main/notes_1600.png" alt="Notes Feature" class="feature-image">
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2">
+                    <div class="feature-content">
+                        <div class="feature-icon mb-4">
+                            <span>📝</span>
+                        </div>
+                        <h2 class="feature-title mb-3">Drop notes</h2>
+                        <p class="feature-text mb-4">Keep track of what matters — from standout features to key questions and conversations. Tag notes by category so they stay organized and tied to each listing, right where you need them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organize Section -->
+    <section id="organize" class="feature-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-1 order-lg-1">
+                    <div class="feature-content">
+                        <div class="feature-icon mb-4">
+                            <span>🧮</span>
+                        </div>
+                        <h2 class="feature-title mb-3">Rank & track</h2>
+                        <p class="feature-text mb-4">Every listing you've rated, noted, or saved — all in one organized view. Rank by score, revisit your favorites, and skip the screenshots, tabs, and scattered texts.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-2 order-lg-2">
+                    <!-- Updated ranking image V3 - 2025-06-09 -->
+                    <img src="assets/img/main/ranking_1600_V3.png" alt="Ranking" class="feature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="feature-section py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="testimonial-box p-4">
+                        <div class="testimonial-text mb-3">
+                            Listing Vibes has completely transformed how I search for homes. The vibe scores make it so easy to compare properties!
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Sarah M.</strong>
+                            <div class="text-muted">First-time Homebuyer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="testimonial-box p-4">
+                        <div class="testimonial-text mb-3">
+                            Finally, a way to keep all my notes and ratings in one place. No more scattered screenshots and texts!
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Michael R.</strong>
+                            <div class="text-muted">Real Estate Agent</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-box p-4">
+                        <div class="testimonial-text mb-3">
+                            The notes feature is a game-changer. I can track all the important details about each property I visit.
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Jessica K.</strong>
+                            <div class="text-muted">Home Buyer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="testimonial-box p-4">
+                        <div class="testimonial-text mb-3">
+                            I love how I can rate different aspects of each property. It helps me make more informed decisions about my home search.
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>David L.</strong>
+                            <div class="text-muted">Home Buyer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="testimonial-box p-4">
+                        <div class="testimonial-text mb-3">
+                            As a real estate agent, this tool helps me better understand my clients' preferences and show them more relevant properties.
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Emily T.</strong>
+                            <div class="text-muted">Real Estate Agent</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-box p-4">
+                        <div class="testimonial-text mb-3">
+                            The organized view of all my saved properties is exactly what I needed. No more digging through my phone for screenshots!
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Alex P.</strong>
+                            <div class="text-muted">First-time Homebuyer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-4 text-start">
+                    <a href="terms.html" style="text-decoration: none; color: #000000;">Terms & Privacy</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="https://twitter.com/listingvibes" target="_blank" class="social-link">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-4 text-end">
+                    <span style="color: #000000;">© 2025 Listing Vibes. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle active state of navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbar = document.querySelector('.navbar');
+            const downloadNavBtn = document.querySelector('.download-nav-btn');
+
+            function setActiveLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Add scroll event listener for navbar background and download button
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    downloadNavBtn.classList.add('visible');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    downloadNavBtn.classList.remove('visible');
+                }
+                setActiveLink();
+            });
+        });
+    </script>
+  </body>
+</html>
